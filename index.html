@@ -7,6 +7,7 @@
     <!-- Import fonts -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.min.css" integrity="sha512-8vEtrrc40OAQaCUaqVzr/Ak8qzntqj1V5E/4KNmPL+tx+iYQ1Z4YUBwvjsJ9sw8Z0l2B+fTO0lnHCd0YvAuJtw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base styles with modern variables */
         :root {
@@ -344,9 +345,209 @@
             font-size: 0.875rem;
             border-top: 1px solid var(--border);
         }
+
+        /* Fullscreen Takeover Overlay */
+        #puzzle-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 24, 39, 0.95);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #b4c2c2;
+            font-family: "Montserrat", "Arial";
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        #puzzle-overlay h1 {
+            color: #16a34a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        #puzzle-overlay section {
+            margin: 1.5rem 0;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        #puzzle-overlay input {
+            color: black;
+            background-color: white;
+            border-radius: 3px;
+            padding: 8px 16px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #4b5563;
+        }
+
+        #bn1 {
+            padding: 8px 16px;
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        #btn2 {
+            padding: 8px 16px;
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        #checkOne, #checkTwo {
+            color: rgb(0,150,25);
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        #xOne, #xTwo {
+            color: rgb(235,30,30);
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .hinty {
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .tabs-menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .w-tab-link {
+            padding: 8px 16px;
+            background-color: #4b5563;
+            color: white;
+            border-radius: 3px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .w-tab-link.w--current {
+            background-color: #16a34a;
+        }
+
+        .w-tab-pane {
+            padding: 1rem;
+            background-color: #1f2937;
+            border-radius: 3px;
+            color: #e5e7eb;
+            display: none;
+        }
+
+        .w-tab-pane.w--tab-active {
+            display: block;
+        }
+
+        @media (max-width: 640px) {
+            #puzzle-overlay h1 {
+                font-size: 1.5rem;
+            }
+            
+            #puzzle-overlay input {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            #bn1, #btn2 {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Fullscreen Takeover Overlay -->
+    <div id="puzzle-overlay">
+        <h1>Welcome to The Menagerie</h1>
+        
+        <section align="center">
+            <font size="3" align="center">Please enter the password to access the puzzle hunt.</font>
+            <br><br>
+            <font size="2" align="center">Hint: The password is hidden within the puzzle hunt materials.</font>
+
+            <div>
+                <input id="textInputOne" placeholder="Enter first password" align="center">
+                <button onclick="fnCheckAnswerOne()" id="bn1">Submit</button>
+            </div>
+            <p id="xOne" style='display: none'><font size="5" style="color:rgb(235,30,30)">&#10008;</font> SORRY, YOUR ANSWER IS INCORRECT.</p>
+            <p id="checkOne" style='display: none'><font size="5" style="color:rgb(0,150,25)"> &#10004;</font> CORRECT! Please proceed to the second password.</p>
+        </section>
+
+        <section id="hidden" style='display: none; flex-direction: column; align-items:center;'>
+            <font size="3" align="center">Please enter the second password to unlock the puzzle hunt.</font>
+            <br>
+            <div align="center">
+                <input id="textInputTwo" placeholder="Enter second password" align="center">
+                <button onclick="fnCheckAnswerTwo()" id="btn2">Submit</button>
+            </div>
+            <p id="xTwo" style='display: none' align="center"><font size="5" style="color:rgb(235,30,30)">&#10008;</font> SORRY, YOUR ANSWER IS INCORRECT.</p>
+            <p id="checkTwo" style='display: none'><font size="5" style="color:rgb(0,150,25)"> &#10004;</font> CORRECT! Unlocking the puzzle hunt...</p>
+
+            <div data-duration-in="300" data-duration-out="100" class="hinty w-tabs">
+                <div class="tabs-menu w-tab-menu">
+                  <a data-w-tab="Tab 1" class="w-inline-block w-tab-link w--current" id="w-tabs-0-data-w-tab-0" href="#w-tabs-0-data-w-pane-0" role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="true">
+                    <div>Hints</div>
+                  </a>
+                  <a data-w-tab="Tab 2" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-1" href="#w-tabs-0-data-w-pane-1" role="tab" aria-controls="w-tabs-0-data-w-pane-1" aria-selected="false">
+                    <div>Hint 1</div>
+                  </a>
+                  <a data-w-tab="Tab 3" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-2" href="#w-tabs-0-data-w-pane-2" role="tab" aria-controls="w-tabs-0-data-w-pane-2" aria-selected="false">
+                    <div>Hint 2</div>
+                  </a>
+                  <a data-w-tab="Tab 4" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-3" href="#w-tabs-0-data-w-pane-3" role="tab" aria-controls="w-tabs-0-data-w-pane-3" aria-selected="false">
+                    <div>Hint 3</div>
+                  </a>
+                  <a data-w-tab="Tab 5" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-4" href="#w-tabs-0-data-w-pane-4" role="tab" aria-controls="w-tabs-0-data-w-pane-4" aria-selected="false">
+                    <div>Answer</div>
+                  </a>
+                </div>
+                <div class="tabs-content w-tab-content">
+                  <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active" id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0">
+                    <div>You need to enter one final password, secretly hidden in the Enigmas deck, to unlock the puzzle hunt! The word ENIGMA is also secretly hidden in the deck (can you find it?), but that is not the password you need.<br></div>
+                  </div>
+                  <div data-w-tab="Tab 2" class="w-tab-pane" id="w-tabs-0-data-w-pane-1" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-1">
+                    <p>The backs of the cards are all identical. The password can be found, in code, on the back of any card.</p>
+                  </div>
+                  <div data-w-tab="Tab 3" class="w-tab-pane" id="w-tabs-0-data-w-pane-2" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-2">
+                    <div>The password is encoded by a string of items that at first glance might look identical, but are not.<br></div>
+                  </div>
+                  <div data-w-tab="Tab 4" class="w-tab-pane" id="w-tabs-0-data-w-pane-3" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-3">
+                    <div>The dots and triangles that run around the edge of the back design can be interpreted as Morse Code: single triangles separate the dots into dots (one dot) and dashes (two dots), and double triangles separate letters. The message runs along the top and right side, and then is repeated along the bottom and left side.</div>
+                  </div>
+                  <div data-w-tab="Tab 5" class="w-tab-pane" id="w-tabs-0-data-w-pane-4" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-4">
+                    <div>The Password is WELLSPOTTED</div>
+                  </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <div class="layout">
         <!-- Header -->
         <header class="header">
@@ -507,7 +708,86 @@
     </div>
     
     <script>
-        // Function to check puzzle answers
+        // Password checking functions
+        function fnCheckAnswerOne() {
+            const input = document.getElementById("textInputOne").value.toUpperCase().replace(/[^A-Z]/g, '');
+            const correctAnswer = "BEASTFRIENDSFOREVER";
+            
+            document.getElementById("xOne").style.display = "none";
+            document.getElementById("checkOne").style.display = "none";
+            
+            if (input === correctAnswer) {
+                document.getElementById("checkOne").style.display = "block";
+                document.getElementById("hidden").style.display = "flex";
+                document.getElementById("textInputTwo").focus();
+            } else {
+                document.getElementById("xOne").style.display = "block";
+            }
+        }
+        
+        function fnCheckAnswerTwo() {
+            const input = document.getElementById("textInputTwo").value.toUpperCase().replace(/[^A-Z]/g, '');
+            const correctAnswer = "WELLSPOTTED";
+            
+            document.getElementById("xTwo").style.display = "none";
+            document.getElementById("checkTwo").style.display = "none";
+            
+            if (input === correctAnswer) {
+                document.getElementById("checkTwo").style.display = "block";
+                // After a short delay, remove the overlay
+                setTimeout(() => {
+                    document.getElementById("puzzle-overlay").style.display = "none";
+                }, 2000);
+            } else {
+                document.getElementById("xTwo").style.display = "block";
+            }
+        }
+        
+        // Tab handling for hints
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.w-tab-link');
+            const tabPanes = document.querySelectorAll('.w-tab-pane');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const tabId = this.getAttribute('aria-controls');
+                    
+                    // Remove active class from all tabs and panes
+                    tabLinks.forEach(el => {
+                        el.classList.remove('w--current');
+                        el.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    tabPanes.forEach(el => {
+                        el.classList.remove('w--tab-active');
+                    });
+                    
+                    // Add active class to current tab and pane
+                    this.classList.add('w--current');
+                    this.setAttribute('aria-selected', 'true');
+                    document.getElementById(tabId).classList.add('w--tab-active');
+                });
+            });
+        });
+        
+        // Add event listeners for Enter key
+        document.getElementById("textInputOne").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                fnCheckAnswerOne();
+            }
+        });
+        
+        document.getElementById("textInputTwo").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                fnCheckAnswerTwo();
+            }
+        });
+        
+        // Function to check puzzle answers (original functionality)
         function checkAnswer() {
             // Store all the possible answers
             const answers = {
@@ -551,10 +831,6 @@
                 
                 // If it's the final answer, you could redirect
                 if (userInput === "BEASTFRIENDSFOREVER") {
-                    // In a real implementation, this would redirect:
-                    // setTimeout(() => {
-                    //     window.location.href = "https://www.puzzlehuntcards.com/dk-bf-cc-ds-9-bff";
-                    // }, 3000);
                     console.log("Final answer found! Redirecting in 3 seconds...");
                 }
             } else {
@@ -570,14 +846,6 @@
                 }, 500);
             }
         }
-        
-        // Add event listener for Enter key
-        document.getElementById("textInputOne").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                checkAnswer();
-            }
-        });
     </script>
 </body>
 </html>
