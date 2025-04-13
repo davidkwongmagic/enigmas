@@ -237,8 +237,34 @@
             flex-direction: column;
         }
 
-        .modal-content h2 {
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1.5rem;
+        }
+
+        .modal-content h2 {
+            margin: 0;
+            flex: 1;
+        }
+
+        .close-button {
+            position: static;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--muted);
+            padding: 0.5rem;
+            margin: -0.5rem;
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+        }
+
+        .close-button:hover {
+            background-color: var(--accent);
+            color: var(--foreground);
         }
 
         .modal-body {
@@ -310,17 +336,6 @@
             display: block;
         }
 
-        .close-button {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: var(--muted);
-        }
-
         .hint-list {
             list-style-type: none;
             padding: 0;
@@ -380,7 +395,7 @@
                         <a href="index.html" class="nav-link">Home</a>
                         <a href="hall-of-fame.html" class="nav-link">Hall of Fame</a>
                         <a href="hints.html" class="nav-link active">Hints</a>
-                        <a href="#" class="nav-link">Info / Errata</a>
+                        <a href="info.html" class="nav-link">Info / Errata</a>
                     </div>
                 </nav>
             </div>
@@ -411,8 +426,10 @@
 
     <div id="hintModal" class="modal">
         <div class="modal-content">
-            <button class="close-button">&times;</button>
-            <h2 id="modalTitle">Puzzle Hints</h2>
+            <div class="modal-header">
+                <h2>Puzzle Hints</h2>
+                <button class="close-button">&times;</button>
+            </div>
             <div class="tabs">
                 <!-- Tabs will be dynamically inserted here -->
             </div>
@@ -852,6 +869,7 @@
             if (!puzzleData) return;
 
             // Set the modal title
+            const modalTitle = document.querySelector('.modal-content h2');
             modalTitle.textContent = `${puzzleData.title} Hints`;
             
             // Get the modal content container
@@ -914,11 +932,6 @@
             // Append containers to modal body
             modalBody.appendChild(tabsContainer);
             modalBody.appendChild(contentContainer);
-
-            // Clear everything after the title and close button
-            while (modalContent.childNodes.length > 4) {
-                modalContent.removeChild(modalContent.lastChild);
-            }
 
             // Append modal body
             modalContent.appendChild(modalBody);

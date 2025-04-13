@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Hall of Fame - The Menagerie Puzzle Hunt</title>
+    <title>Info & Errata - The Menagerie Puzzle Hunt</title>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <!-- Import fonts -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -74,6 +74,14 @@
                 flex-direction: row;
                 justify-content: space-between;
             }
+
+            .nav-group {
+                order: 2;
+            }
+
+            .logo {
+                order: 1;
+            }
         }
 
         .nav-group {
@@ -129,112 +137,74 @@
         .content {
             max-width: 800px;
             margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        /* Cards */
-        .card {
+            padding: 2rem;
             background-color: var(--card);
             border-radius: var(--radius);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            padding: 2rem;
-            height: fit-content;
-            width: 100%;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        /* Typography */
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
+        .content h1 {
             color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .content p {
             margin-bottom: 1.5rem;
+        }
+
+        .separator {
             text-align: center;
+            font-size: 1.5rem;
+            color: var(--muted);
+            margin: 2rem 0;
+            letter-spacing: 1rem;
         }
 
-        .solver-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .solver-list li {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .solver-list li:last-child {
-            border-bottom: none;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: auto;
-            padding: 2rem 0;
-            text-align: center;
-            color: var(--muted-foreground);
-            font-size: 0.875rem;
+        .errata-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
             border-top: 1px solid var(--border);
+        }
+
+        .errata-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
     </style>
 </head>
 <body>
     <div class="layout">
-        <!-- Header -->
         <header class="header">
             <div class="container">
                 <nav class="navbar">
                     <a href="index.html" class="logo">The Menagerie</a>
                     <div class="nav-group">
                         <a href="index.html" class="nav-link">Home</a>
-                        <a href="hall-of-fame.html" class="nav-link active">Hall of Fame</a>
+                        <a href="hall-of-fame.html" class="nav-link">Hall of Fame</a>
                         <a href="hints.html" class="nav-link">Hints</a>
-                        <a href="info.html" class="nav-link">Info / Errata</a>
+                        <a href="info.html" class="nav-link active">Info / Errata</a>
                     </div>
                 </nav>
             </div>
         </header>
 
-        <!-- Main content -->
         <main class="container">
             <div class="content">
-                <div class="card">
-                    <h1>Hall of Fame</h1>
-                    <ul class="solver-list">
-                        <li>Ben Zimmer</li>
-                        <li>Chris Haimson</li>
-                        <li>Christopher Bow</li>
-                        <li>Circles All the Way Down (Summer Herrick & Jonathan McCue)</li>
-                        <li>Dan Katz</li>
-                        <li>Ellie and Ronnie Kon</li>
-                        <li>Escape Room-antics (Jonathan and Sarah Mendez)</li>
-                        <li>Foggy Brume</li>
-                        <li>Jason Patterson</li>
-                        <li>Jayden Browne</li>
-                        <li>Joseph Echt</li>
-                        <li>Kristian Quino</li>
-                        <li>Michael Steer</li>
-                        <li>Richard Kalustian</li>
-                        <li>Stitch 'n Share (Seth Rotkin and Karen Share)</li>
-                        <li>Suzanne Britton</li>
-                        <li>Sylvain Brugnot</li>
-                        <li>Tamas Toth</li>
-                        <li>Team Palmford</li>
-                        <li>Toast</li>
-                        <li>Viktor Wyot</li>
-                        <li>Vulgar Boatmen (Greg Pliska, Guy Jacobson, Laura Pliska, Felicia Yue)</li>
-                        <li>Yossi Fendel</li>
-                        <li>Zachari Dahran</li>
-                    </ul>
+                <h1>Info & Errata</h1>
+                
+                <p>Heartfelt thanks go to everyone who helped make this hunt a reality and (I hope!) a fun challenge to everyone who attempts it. This includes, though is not limited to: David Kwong, who conceived the idea of the Enigmas Deck and trusted me to write a whole hunt for it (and then playtested it); Chris Chelko, our knowledgeable producing partner on the entire project; Billy French, whose artwork and web design helped the Hunt pop off the page; Patrick Roche, for his additional tireless assistance with the website; and our testsolvers: David Arnott, Stephanie Kelleher Bennett, Mark Halpin, Elissa Grossman, Emily Jillette, Craig Mazin, Melissa Mazin, and Sandor Weisz, all of whom provided essential commentary, insight, and reality checks to make the hunt much better than it was before things were put in their hands.</p>
+
+                <div class="separator">*     *     *</div>
+
+                <div class="errata-section">
+                    <h2>Known Errata</h2>
+                    <p>The following errors in the initial PDF have been brought to our attention. Some may have been corrected and the PDF replaced, in which case the timing of the replacement is noted:</p>
+                    <p>None yet.</p>
                 </div>
             </div>
         </main>
-        
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p>© 2025 The Menagerie Puzzle Hunt</p>
-            </div>
-        </footer>
     </div>
 </body>
 </html> 
