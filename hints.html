@@ -225,32 +225,46 @@
         .modal-content {
             position: relative;
             background-color: var(--card);
-            margin: 5% auto;
+            margin: 2rem auto;
             padding: 2rem;
             width: 90%;
-            max-width: 800px;
+            max-width: 1000px;
             border-radius: var(--radius);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: calc(100vh - 4rem);
+            overflow-y: auto;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
         }
 
         .tabs {
             display: flex;
+            flex-direction: column;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-            overflow-x: auto;
+            min-width: 150px;
+            border-right: 1px solid var(--border);
+            padding-right: 1rem;
         }
 
         .tab {
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             background: none;
             border: none;
             border-radius: var(--radius);
             cursor: pointer;
             color: var(--muted-foreground);
             font-weight: 500;
-            white-space: nowrap;
+            text-align: left;
+            width: 100%;
+            transition: all 0.2s ease;
         }
 
         .tab.active {
@@ -262,12 +276,14 @@
             background-color: var(--accent);
         }
 
+        .tab-contents {
+            flex: 1;
+            min-width: 0; /* Prevent content from overflowing */
+        }
+
         .tab-content {
             display: none;
-            padding: 1rem;
-            background-color: var(--card);
-            border-radius: var(--radius);
-            margin-top: 1rem;
+            padding: 0;
         }
 
         .tab-content.active {
@@ -852,11 +868,13 @@
             // Get the modal content container
             const modalContent = document.querySelector('.modal-content');
             
-            // Remove any existing tabs and content containers
-            const existingTabs = modalContent.querySelector('.tabs');
-            const existingContent = modalContent.querySelector('.tab-contents');
-            if (existingTabs) existingTabs.remove();
-            if (existingContent) existingContent.remove();
+            // Remove any existing modal body if it exists
+            const existingBody = modalContent.querySelector('.modal-body');
+            if (existingBody) existingBody.remove();
+            
+            // Create modal body
+            const modalBody = document.createElement('div');
+            modalBody.className = 'modal-body';
             
             // Create new containers
             const tabsContainer = document.createElement('div');
@@ -904,9 +922,12 @@
                 contentContainer.appendChild(content);
             });
 
-            // Append the new containers to the modal
-            modalContent.insertBefore(contentContainer, modalContent.querySelector('.close-button').nextSibling);
-            modalContent.insertBefore(tabsContainer, contentContainer);
+            // Append containers to modal body
+            modalBody.appendChild(tabsContainer);
+            modalBody.appendChild(contentContainer);
+
+            // Append modal body after the title
+            modalContent.insertBefore(modalBody, modalContent.querySelector('.close-button').nextSibling);
 
             // Show the modal
             modal.style.display = 'block';
