@@ -225,12 +225,84 @@
         .modal-content {
             position: relative;
             background-color: var(--card);
-            margin: 10% auto;
+            margin: 5% auto;
             padding: 2rem;
-            width: 80%;
-            max-width: 600px;
+            width: 90%;
+            max-width: 800px;
             border-radius: var(--radius);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            color: var(--muted-foreground);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .tab:hover:not(.active) {
+            background-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1rem;
+            background-color: var(--card);
+            border-radius: var(--radius);
+            margin-top: 1rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .reveal-hint-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .reveal-hint-btn:hover {
+            opacity: 0.9;
+        }
+
+        .hint-content {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--accent);
+            border-radius: var(--radius);
+            white-space: pre-wrap;
+        }
+
+        .hint-content.revealed {
+            display: block;
         }
 
         .close-button {
@@ -319,20 +391,47 @@
         <div class="modal-content">
             <button class="close-button">&times;</button>
             <h2 id="modalTitle">Puzzle Hints</h2>
-            <ul class="hint-list" id="hintList">
-                <!-- Hints will be dynamically inserted here -->
-            </ul>
+            <div class="tabs">
+                <!-- Tabs will be dynamically inserted here -->
+            </div>
+            <div class="tab-contents">
+                <!-- Tab contents will be dynamically inserted here -->
+            </div>
         </div>
     </div>
 
     <script>
         // Sample hints data - you can replace this with your actual hints
         const hintsData = {
-            broadcasting: [
-                "Hint 1: Pay attention to the audio frequencies",
-                "Hint 2: Look for patterns in the broadcast schedule",
-                "Hint 3: Consider the meaning behind the station IDs"
-            ],
+            broadcasting: {
+                title: "Broadcasting Studio",
+                hints: [
+                    {
+                        title: "Hint 1",
+                        content: "This type of puzzle takes practice and persistence. Look for patterns in the lines that can reflect what the rules are. Try breaking the lines up into likely words (even if you don't know why yet), and then try to figure out the rule that makes regular words into those close-but-not-quite words. If there is a particular letter, say X, that appears every so often but looks like it does not belong, consider that a rule might be \"Add an X [before/after/as the second letter of] each word,\" or maybe \"change each second letter [or each M] to X.\" Each line is a mini-puzzle in itself."
+                    },
+                    {
+                        title: "Hint 2",
+                        content: "For example, the first item is:\nTECHNICBTESFPBEEKEEPIOFACILIU\nThis looks like a plausible way to break things up:\nTECHNICB TESFP BEEKEEPIO FACILIU\nAnd there's something going on with last letters, since it looks like it should be:\n\nTECHNIC(AL) TESF(??) BEEKEEPI(NG) FACILI(TY)\nSo, the last letter is removed, and the new last letter is moved one forward in the alphabet. That second group was not one word, but two, giving:\nTECHNICAL TERM FOR BEEKEEPING FACILITY, which is APIARY\nThen apply the rule to APIARY, changing it to APIAS, which is (for now) the answer to the first item."
+                    },
+                    {
+                        title: "Hint 3",
+                        content: "3 more rules, for 3 different lines (which ones are for you to figure out):\n\n-- Delete the first letter; then change 4th letter to R and add S to the end\n-- Reverse all but last letter, then swap first 2 letters\n-- Change H to M, N to C, and O to a copy of the letter after it"
+                    },
+                    {
+                        title: "Hint 4",
+                        content: "All the modified answers have something in common. What is it? And what does that suggest you do?"
+                    },
+                    {
+                        title: "Hint 5",
+                        content: "The modified answers are all a 1-letter change away from a 1-word television show. Look at the wrong letters and then the right letters."
+                    },
+                    {
+                        title: "Answer",
+                        content: "The answer to the puzzle is THE DEAN MARTIN SHOW. (The clue phrase is \"Program with Everybody / Loves Somebody as theme.\")"
+                    }
+                ]
+            },
             computer: [
                 "Hint 1: Check the system logs",
                 "Hint 2: Look for hidden files",
@@ -376,26 +475,79 @@
         };
 
         const modal = document.getElementById('hintModal');
-        const hintList = document.getElementById('hintList');
+        const hintList = document.querySelector('.tab-contents');
         const modalTitle = document.getElementById('modalTitle');
         const closeButton = document.querySelector('.close-button');
         const hintButtons = document.querySelectorAll('.hint-button');
 
-        function showHints(puzzleName) {
-            const hints = hintsData[puzzleName];
-            hintList.innerHTML = '';
+        function createTabsAndContent(hints) {
+            const tabsContainer = document.createElement('div');
+            tabsContainer.className = 'tabs';
+            
+            const contentContainer = document.createElement('div');
+            contentContainer.className = 'tab-contents';
+
             hints.forEach((hint, index) => {
-                const li = document.createElement('li');
-                li.className = 'hint-item hidden';
-                li.innerHTML = `
-                    <p>${hint}</p>
-                    ${index < hints.length - 1 ? '<button class="reveal-button">Reveal Next Hint</button>' : ''}
-                `;
-                hintList.appendChild(li);
+                // Create tab
+                const tab = document.createElement('button');
+                tab.className = 'tab' + (index === 0 ? ' active' : '');
+                tab.textContent = hint.title;
+                tab.onclick = () => switchTab(index, hints.length);
+                tabsContainer.appendChild(tab);
+
+                // Create content
+                const content = document.createElement('div');
+                content.className = 'tab-content' + (index === 0 ? ' active' : '');
+                content.id = `tab-${index}`;
+
+                if (index === 0) {
+                    // Only first tab gets reveal button
+                    const revealBtn = document.createElement('button');
+                    revealBtn.className = 'reveal-hint-btn';
+                    revealBtn.textContent = 'Reveal Hint';
+                    revealBtn.onclick = () => revealHint(index);
+                    content.appendChild(revealBtn);
+                }
+
+                const hintContent = document.createElement('div');
+                hintContent.className = 'hint-content' + (index === 0 ? '' : ' revealed');
+                hintContent.textContent = hint.content;
+                content.appendChild(hintContent);
+
+                contentContainer.appendChild(content);
             });
-            modalTitle.textContent = `${puzzleName.charAt(0).toUpperCase() + puzzleName.slice(1)} Hints`;
+
+            return { tabsContainer, contentContainer };
+        }
+
+        function switchTab(index, totalTabs) {
+            document.querySelectorAll('.tab').forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            document.querySelectorAll('.tab-content').forEach((content, i) => {
+                content.classList.toggle('active', i === index);
+            });
+        }
+
+        function revealHint(index) {
+            const content = document.querySelector(`#tab-${index} .hint-content`);
+            content.classList.add('revealed');
+            const revealBtn = document.querySelector(`#tab-${index} .reveal-hint-btn`);
+            revealBtn.style.display = 'none';
+        }
+
+        function showHints(puzzleName) {
+            const puzzleData = hintsData[puzzleName];
+            if (!puzzleData) return;
+
+            modalTitle.textContent = `${puzzleData.title} Hints`;
+            hintList.innerHTML = '';
+
+            const { tabsContainer, contentContainer } = createTabsAndContent(puzzleData.hints);
+            hintList.appendChild(tabsContainer);
+            hintList.appendChild(contentContainer);
+
             modal.style.display = 'block';
-            hintList.firstElementChild?.classList.remove('hidden');
         }
 
         hintButtons.forEach(button => {
@@ -415,12 +567,12 @@
         });
 
         document.addEventListener('click', (event) => {
-            if (event.target.classList.contains('reveal-button')) {
-                const currentHint = event.target.closest('.hint-item');
+            if (event.target.classList.contains('reveal-hint-btn')) {
+                const currentHint = event.target.closest('.hint-content');
                 const nextHint = currentHint.nextElementSibling;
                 if (nextHint) {
-                    nextHint.classList.remove('hidden');
-                    currentHint.querySelector('.reveal-button')?.remove();
+                    nextHint.classList.remove('revealed');
+                    currentHint.querySelector('.reveal-hint-btn')?.remove();
                 }
             }
         });
