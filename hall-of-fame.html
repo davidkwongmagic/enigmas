@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Hall of Fame - The Menagerie Puzzle Hunt</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <!-- Import fonts -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.min.css" integrity="sha512-8vEtrrc40OAQaCUaqVzr/Ak8qzntqj1V5E/4KNmPL+tx+iYQ1Z4YUBwvjsJ9sw8Z0l2B+fTO0lnHCd0YvAuJtw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base styles with modern variables */
+        :root {
+            --background: #f8f9fc;
+            --foreground: #111827;
+            --card: #ffffff;
+            --card-foreground: #111827;
+            --primary: #16a34a;
+            --primary-foreground: #ffffff;
+            --muted: #6b7280;
+            --muted-foreground: #6b7280;
+            --accent: #f3f4f6;
+            --accent-foreground: #111827;
+            --destructive: #ef4444;
+            --border: #e5e7eb;
+            --input: #e5e7eb;
+            --ring: #16a34a;
+            --radius: 0.5rem;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        /* Container and layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            gap: 2rem;
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--foreground);
+        }
+
+        .active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -6px;
+            left: 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Main content */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 2rem;
+            height: fit-content;
+            width: 100%;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .solver-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .solver-list li {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .solver-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <div class="nav-group">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="hall-of-fame.html" class="nav-link active">Hall of Fame</a>
+                    </div>
+                    <a href="index.html" class="logo">The Menagerie</a>
+                    <div class="nav-group">
+                        <a href="#" class="nav-link">Hints</a>
+                        <a href="#" class="nav-link">Info / Errata</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="container">
+            <div class="content">
+                <div class="card">
+                    <h1>Hall of Fame</h1>
+                    <ul class="solver-list">
+                        <li>Ben Zimmer</li>
+                        <li>Chris Haimson</li>
+                        <li>Christopher Bow</li>
+                        <li>Circles All the Way Down (Summer Herrick & Jonathan McCue)</li>
+                        <li>Dan Katz</li>
+                        <li>Ellie and Ronnie Kon</li>
+                        <li>Escape Room-antics (Jonathan and Sarah Mendez)</li>
+                        <li>Foggy Brume</li>
+                        <li>Jason Patterson</li>
+                        <li>Jayden Browne</li>
+                        <li>Joseph Echt</li>
+                        <li>Kristian Quino</li>
+                        <li>Michael Steer</li>
+                        <li>Richard Kalustian</li>
+                        <li>Stitch 'n Share (Seth Rotkin and Karen Share)</li>
+                        <li>Suzanne Britton</li>
+                        <li>Sylvain Brugnot</li>
+                        <li>Tamas Toth</li>
+                        <li>Team Palmford</li>
+                        <li>Toast</li>
+                        <li>Viktor Wyot</li>
+                        <li>Vulgar Boatmen (Greg Pliska, Guy Jacobson, Laura Pliska, Felicia Yue)</li>
+                        <li>Yossi Fendel</li>
+                        <li>Zachari Dahran</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>© 2025 The Menagerie Puzzle Hunt</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 
