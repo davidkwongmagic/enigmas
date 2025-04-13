@@ -847,19 +847,51 @@
             if (!puzzleData) return;
 
             modalTitle.textContent = `${puzzleData.title} Hints`;
-            hintList.innerHTML = '';
+            
+            // Clear existing content
+            const tabsContainer = document.querySelector('.tabs');
+            const contentContainer = document.querySelector('.tab-contents');
+            tabsContainer.innerHTML = '';
+            contentContainer.innerHTML = '';
 
             // Add introduction if it exists
             if (puzzleData.introduction) {
                 const introText = document.createElement('p');
                 introText.className = 'puzzle-introduction';
                 introText.innerHTML = puzzleData.introduction;
-                hintList.appendChild(introText);
+                contentContainer.appendChild(introText);
             }
 
-            const { tabsContainer, contentContainer } = createTabsAndContent(puzzleData.hints);
-            hintList.appendChild(tabsContainer);
-            hintList.appendChild(contentContainer);
+            // Create tabs and content
+            puzzleData.hints.forEach((hint, index) => {
+                // Create tab
+                const tab = document.createElement('button');
+                tab.className = 'tab' + (index === 0 ? ' active' : '');
+                tab.textContent = hint.title;
+                tab.onclick = () => switchTab(index, puzzleData.hints.length);
+                tabsContainer.appendChild(tab);
+
+                // Create content
+                const content = document.createElement('div');
+                content.className = 'tab-content' + (index === 0 ? ' active' : '');
+                content.id = `tab-${index}`;
+
+                if (index === 0) {
+                    // Only first tab gets reveal button
+                    const revealBtn = document.createElement('button');
+                    revealBtn.className = 'reveal-hint-btn';
+                    revealBtn.textContent = 'Reveal Hint';
+                    revealBtn.onclick = () => revealHint(index);
+                    content.appendChild(revealBtn);
+                }
+
+                const hintContent = document.createElement('div');
+                hintContent.className = 'hint-content' + (index === 0 ? '' : ' revealed');
+                hintContent.textContent = hint.content;
+                content.appendChild(hintContent);
+
+                contentContainer.appendChild(content);
+            });
 
             modal.style.display = 'block';
         }
