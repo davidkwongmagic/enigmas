@@ -261,6 +261,7 @@
             border-radius: var(--radius);
             background-color: var(--accent);
             display: none;
+            width: 100%;
         }
 
         .result-title {
@@ -273,9 +274,31 @@
             width: 100%;
             max-width: 100%;
             height: auto;
+            min-height: 300px;
             border-radius: calc(var(--radius) - 2px);
             margin-top: 0.75rem;
             object-fit: contain;
+            background-color: white;
+        }
+
+        /* Add container for image to maintain aspect ratio */
+        .result-image-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 75%; /* 4:3 aspect ratio */
+            margin-top: 0.75rem;
+            background-color: white;
+            border-radius: calc(var(--radius) - 2px);
+        }
+
+        .result-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: calc(var(--radius) - 2px);
         }
 
         /* Error message */
@@ -396,49 +419,65 @@
                     <div id="im1" class="result">
                         <div class="result-title">✅ Correct! You found answer #1</div>
                         <p>THE DEAN MARTIN SHOW</p>
-                        <img src="images/1.png" alt="Puzzle 1 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/1.png" alt="Puzzle 1 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im2" class="result">
                         <div class="result-title">✅ Correct! You found answer #2</div>
                         <p>DENIAL OF SERVICE</p>
-                        <img src="images/2.png" alt="Puzzle 2 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/2.png" alt="Puzzle 2 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im3" class="result">
                         <div class="result-title">✅ Correct! You found answer #3</div>
                         <p>FLATBED TRAILER</p>
-                        <img src="images/3.png" alt="Puzzle 3 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/3.png" alt="Puzzle 3 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im4" class="result">
                         <div class="result-title">✅ Correct! You found answer #4</div>
                         <p>MIDTERM BREAK</p>
-                        <img src="images/4.png" alt="Puzzle 4 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/4.png" alt="Puzzle 4 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im5" class="result">
                         <div class="result-title">✅ Correct! You found answer #5</div>
                         <p>LIFE INSURANCE</p>
-                        <img src="images/5.png" alt="Puzzle 5 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/5.png" alt="Puzzle 5 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im6" class="result">
                         <div class="result-title">✅ Correct! You found answer #6</div>
                         <p>METEOR ORBITS</p>
-                        <img src="images/6.png" alt="Puzzle 6 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/6.png" alt="Puzzle 6 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im7" class="result">
                         <div class="result-title">✅ Correct! You found answer #7</div>
                         <p>COSMOPOLITANS</p>
-                        <img src="images/7.png" alt="Puzzle 7 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/7.png" alt="Puzzle 7 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im8" class="result">
                         <div class="result-title">✅ Correct! You found answer #8</div>
                         <p>POWERPOINT</p>
-                        <img src="images/8.png" alt="Puzzle 8 Hint" class="result-image">
+                        <div class="result-image-container">
+                            <img src="images/8.png" alt="Puzzle 8 Hint" class="result-image">
+                        </div>
                     </div>
                     
                     <div id="im9" class="result">
