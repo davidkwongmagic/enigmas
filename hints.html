@@ -84,6 +84,12 @@
             justify-content: center;
         }
 
+        @media (min-width: 768px) {
+            .nav-group {
+                justify-content: flex-end;
+            }
+        }
+
         .nav-link {
             color: var(--muted-foreground);
             text-decoration: none;
@@ -127,7 +133,7 @@
 
         @media (min-width: 1024px) {
             .content {
-                grid-template-columns: 3fr 2fr;
+                grid-template-columns: 1fr;
             }
         }
 
@@ -258,13 +264,13 @@
         <header class="header">
             <div class="container">
                 <nav class="navbar">
+                    <a href="index.html" class="logo">The Menagerie</a>
                     <div class="nav-group">
                         <a href="index.html" class="nav-link">Home</a>
                         <a href="hall-of-fame.html" class="nav-link">Hall of Fame</a>
                         <a href="hints.html" class="nav-link active">Hints</a>
                         <a href="#" class="nav-link">Info / Errata</a>
                     </div>
-                    <a href="index.html" class="logo">The Menagerie</a>
                 </nav>
             </div>
         </header>

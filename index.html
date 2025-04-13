@@ -84,6 +84,12 @@
             justify-content: center;
         }
 
+        @media (min-width: 768px) {
+            .nav-group {
+                justify-content: flex-end;
+            }
+        }
+
         .nav-link {
             color: var(--muted-foreground);
             text-decoration: none;
@@ -346,13 +352,13 @@
         <header class="header">
             <div class="container">
                 <nav class="navbar">
+                    <a href="index.html" class="logo">The Menagerie</a>
                     <div class="nav-group">
                         <a href="index.html" class="nav-link active">Home</a>
                         <a href="hall-of-fame.html" class="nav-link">Hall of Fame</a>
                         <a href="hints.html" class="nav-link">Hints</a>
                         <a href="#" class="nav-link">Info / Errata</a>
                     </div>
-                    <a href="index.html" class="logo">The Menagerie</a>
                 </nav>
             </div>
         </header>
@@ -393,7 +399,7 @@
                         Happy solving!
                     </p>
                     <p style="color: var(--muted-foreground); font-style: italic;">
-                        (Please direct any questions, comments, or errata reports to <a href="mailto:example@example.com">example@example.com</a>)
+                        (Please direct any questions, comments, or errata reports to <a href="mailto:dshukan@gmail.com">David Shukan</a>)
                     </p>
                 </div>
 
