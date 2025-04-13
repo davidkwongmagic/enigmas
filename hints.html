@@ -346,6 +346,23 @@
         .reveal-button:hover {
             opacity: 0.9;
         }
+
+        .puzzle-introduction {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: var(--accent);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+        }
+
+        .puzzle-introduction a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .puzzle-introduction a:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -469,11 +486,44 @@
                     }
                 ]
             },
-            fulfillment: [
-                "Hint 1: Examine the shipping labels",
-                "Hint 2: Look for patterns in the inventory",
-                "Hint 3: Check the order processing system"
-            ],
+            fulfillment: {
+                title: "Fulfillment Center",
+                introduction: "This puzzle is a cryptic crossword, a common type of puzzle whose clues are solved in a bit of a different way from standard crossword puzzles. If you are unfamiliar with how cryptic crosswords work, or want a refresher, you can find a brief introduction here: https://s.wsj.net/blogs/html/wsjcrypticguide.pdf and a more thorough discussion here: https://en.wikipedia.org/wiki/Cryptic_crossword.",
+                hints: [
+                    {
+                        title: "Hint 1",
+                        content: "In cryptics where a letter needs to come out of certain words, it is often useful to look for words that can have a letter deleted and still remain words. In this puzzle, since the deleted-letter words then move to the end of the clue, look for words that can have a letter deleted while remaining a word, and that make sense in combination with the rest of the clue if moved to the end of the clue."
+                    },
+                    {
+                        title: "Hint 2",
+                        content: "The following clues are the \"pickup\" clues, where a word moves to the front of the clue and picks up a letter: 5A, 11A, 21A, 24A, 29A, 37A, 39A, 1D, 3D, 12D, 20D, 30D, 33D, 35D."
+                    },
+                    {
+                        title: "Hint 3",
+                        content: "The following clues are the \"drop-off\" clues, where a word moves to the end of the clue and drops off a letter: 16A, 18A, 19A, 34A, 41A, 42A, 2D, 6D, 9D, 15D, 22D, 25D, 31D, 32D."
+                    },
+                    {
+                        title: "Hint 4",
+                        content: "The answer to the word across the center of the grid (24A) is TIDIEST. It is a pickup clue, parsed as follows: [Li(k)e] The house most meticulously kept / (it is = 'TIS) around (depart = DIE) and ultimately revisit ( = T)."
+                    },
+                    {
+                        title: "Hint 5",
+                        content: "The answer to the clue word down the center of the grid (14D) is CHEWINESS. It is a standard clue, parsed as: Gummy quality / of / game infused with wine [ = CHE(WINE)SS]"
+                    },
+                    {
+                        title: "Hint 6",
+                        content: "Once all clues have been solved, the picked up and dropped off letters spell: \"Look between the / Twins in the grid.\" What are the \"twins in the grid\" that might have something between them?"
+                    },
+                    {
+                        title: "Hint 7",
+                        content: "The \"twins in the grid\" that you need to look between (based on the endgame message) are all the places in the grid where the same letter appears twice (\"twins\") across or down, with a single, different letter between it. So, for example, the B in ABA. The in-between letters, in grid order, will spell out the answer."
+                    },
+                    {
+                        title: "Answer",
+                        content: "The answer to the puzzle is FLATBED TRAILER."
+                    }
+                ]
+            },
             map: [
                 "Hint 1: Study the coordinate system",
                 "Hint 2: Look for hidden landmarks",
@@ -518,6 +568,14 @@
             
             const contentContainer = document.createElement('div');
             contentContainer.className = 'tab-contents';
+
+            // Add introduction if it exists in puzzleData
+            if (puzzleData.introduction) {
+                const introText = document.createElement('p');
+                introText.className = 'puzzle-introduction';
+                introText.innerHTML = puzzleData.introduction;
+                contentContainer.appendChild(introText);
+            }
 
             hints.forEach((hint, index) => {
                 // Create tab
@@ -574,6 +632,14 @@
 
             modalTitle.textContent = `${puzzleData.title} Hints`;
             hintList.innerHTML = '';
+
+            // Add introduction if it exists
+            if (puzzleData.introduction) {
+                const introText = document.createElement('p');
+                introText.className = 'puzzle-introduction';
+                introText.innerHTML = puzzleData.introduction;
+                hintList.appendChild(introText);
+            }
 
             const { tabsContainer, contentContainer } = createTabsAndContent(puzzleData.hints);
             hintList.appendChild(tabsContainer);
