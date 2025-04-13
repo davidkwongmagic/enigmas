@@ -74,6 +74,14 @@
                 flex-direction: row;
                 justify-content: space-between;
             }
+
+            .nav-group {
+                order: 2;
+            }
+
+            .logo {
+                order: 1;
+            }
         }
 
         .nav-group {
@@ -133,7 +141,7 @@
 
         @media (min-width: 1024px) {
             .content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 2fr 3fr;
             }
         }
 
@@ -175,12 +183,19 @@
             text-decoration: none;
         }
 
-        /* Hint specific styles */
+        /* Hint buttons list */
+        .hint-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
         .hint-button {
-            display: block;
+            text-align: left;
+            display: flex;
             width: 100%;
-            padding: 1rem;
-            margin: 0.5rem 0;
+            padding: 1rem 1.25rem;
+            margin: 0;
             background-color: var(--card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
@@ -188,10 +203,12 @@
             cursor: pointer;
             transition: all 0.2s;
             color: var(--foreground);
+            align-items: center;
         }
 
         .hint-button:hover {
             background-color: var(--accent);
+            transform: translateX(-4px);
         }
 
         .modal {
@@ -281,18 +298,18 @@
                     <h1>Puzzle Hints</h1>
                     <p>Everyone could use a little help every now and then!</p>
                     <p>Hints are presented in roughly the order you'll need them while solving the puzzle. Whenever you want, click through a puzzle's hints in order until you find information you did not already know. Without hints, the puzzles are pretty difficult, so please take hints as often as you want. By presenting hints in this form, rather than on the page or not at all, every solver can customize the Hunt to their own desired level of difficulty.</p>
+                </div>
 
-                    <div class="hint-buttons">
-                        <button class="hint-button" data-puzzle="broadcasting">Broadcasting Studio Hints</button>
-                        <button class="hint-button" data-puzzle="computer">Computer Lab Hints</button>
-                        <button class="hint-button" data-puzzle="fulfillment">Fulfillment Center Hints</button>
-                        <button class="hint-button" data-puzzle="map">Map Room Hints</button>
-                        <button class="hint-button" data-puzzle="noah">Noah's Ark Hints</button>
-                        <button class="hint-button" data-puzzle="observatory">Observatory Hints</button>
-                        <button class="hint-button" data-puzzle="restaurant">Restaurant Hints</button>
-                        <button class="hint-button" data-puzzle="terrarium">Terrarium Hints</button>
-                        <button class="hint-button" data-puzzle="menagerie">The Menagerie (Metapuzzle) Hints</button>
-                    </div>
+                <div class="hint-buttons">
+                    <button class="hint-button" data-puzzle="broadcasting">Broadcasting Studio Hints</button>
+                    <button class="hint-button" data-puzzle="computer">Computer Lab Hints</button>
+                    <button class="hint-button" data-puzzle="fulfillment">Fulfillment Center Hints</button>
+                    <button class="hint-button" data-puzzle="map">Map Room Hints</button>
+                    <button class="hint-button" data-puzzle="noah">Noah's Ark Hints</button>
+                    <button class="hint-button" data-puzzle="observatory">Observatory Hints</button>
+                    <button class="hint-button" data-puzzle="restaurant">Restaurant Hints</button>
+                    <button class="hint-button" data-puzzle="terrarium">Terrarium Hints</button>
+                    <button class="hint-button" data-puzzle="menagerie">The Menagerie (Metapuzzle) Hints</button>
                 </div>
             </div>
         </main>
