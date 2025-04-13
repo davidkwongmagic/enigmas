@@ -506,11 +506,11 @@
         </section>
 
         <section id="hidden" style='display: none; flex-direction: column; align-items:center;'>
-            <font size="3" align="center">Please Enter The Four Answers To The Puzzles In The Playing Cards, In Alphabetical Order, No Spaces.</font>
+            <font size="3" align="center">Please Enter The Four Answers To The Playing Cards, In Alphabetical Order, No Spaces.</font>
             <br><br>
-            <div>
-                <input id="textInputTwo" placeholder="Enter your answer" align="center">
-                <button onclick="fnCheckAnswerTwo()" id="btn2">Submit</button>
+            <div style="display: flex; gap: 0.5rem; width: 100%; max-width: 500px;">
+                <input id="textInputTwo" placeholder="Enter your answer" style="flex: 1; padding: 8px 16px; border-radius: 3px; border: 1px solid #4b5563; color: black; background-color: white;">
+                <button onclick="fnCheckAnswerTwo()" id="btn2" style="white-space: nowrap;">Submit</button>
             </div>
             <div class="input-caption">For example, if the four answers were RED, YELLOW, GREEN, and PURPLE, you would enter GREENPURPLEREDYELLOW</div>
             <p id="xTwo" style='display: none' align="center"><font size="5" style="color:rgb(235,30,30)">&#10008;</font> SORRY, YOUR ANSWER IS INCORRECT.</p>
