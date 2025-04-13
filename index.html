@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>The Menagerie Puzzle Hunt</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <!-- Import fonts -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.min.css" integrity="sha512-8vEtrrc40OAQaCUaqVzr/Ak8qzntqj1V5E/4KNmPL+tx+iYQ1Z4YUBwvjsJ9sw8Z0l2B+fTO0lnHCd0YvAuJtw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base styles with modern variables */
+        :root {
+            --background: #f8f9fc;
+            --foreground: #111827;
+            --card: #ffffff;
+            --card-foreground: #111827;
+            --primary: #7307BC;
+            --primary-foreground: #ffffff;
+            --muted: #6b7280;
+            --muted-foreground: #6b7280;
+            --accent: #f3f4f6;
+            --accent-foreground: #111827;
+            --destructive: #ef4444;
+            --border: #e5e7eb;
+            --input: #e5e7eb;
+            --ring: #7307BC;
+            --radius: 0.5rem;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        /* Container and layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .layout {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            gap: 2rem;
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--foreground);
+        }
+
+        .active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -6px;
+            left: 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Main content */
+        .content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Components */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            font-size: 0.9rem;
+            height: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .button-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+        }
+
+        .button-primary:hover {
+            opacity: 0.9;
+        }
+
+        .button-icon {
+            margin-right: 0.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .input {
+            flex: 1;
+            height: 2.5rem;
+            padding: 0 1rem;
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--input);
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: var(--ring);
+            box-shadow: 0 0 0 2px rgba(115, 7, 188, 0.2);
+        }
+
+        /* Download button */
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            transition: all 0.2s;
+        }
+
+        .download-button:hover {
+            opacity: 0.9;
+        }
+
+        .download-icon {
+            margin-right: 0.75rem;
+        }
+
+        /* Answer results */
+        .result {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            background-color: var(--accent);
+            display: none;
+        }
+
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .result-image {
+            width: 100%;
+            border-radius: calc(var(--radius) - 2px);
+            margin-top: 0.75rem;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        /* Error message */
+        .error-message {
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--destructive);
+            font-weight: 500;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background-color: var(--border);
+            margin: 1.5rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--muted-foreground);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <nav class="navbar">
+                    <div class="nav-group">
+                        <a href="#" class="nav-link active">Home</a>
+                        <a href="#" class="nav-link">Hall of Fame</a>
+                    </div>
+                    <div class="logo">The Menagerie</div>
+                    <div class="nav-group">
+                        <a href="#" class="nav-link">Hints</a>
+                        <a href="#" class="nav-link">Info / Errata</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <main class="container">
+            <div class="content">
+                <!-- Left column - puzzle info -->
+                <div class="card">
+                    <a href="#" class="download-button">
+                        <span class="download-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </span>
+                        Download the Puzzle Hunt
+                    </a>
+                    <p class="text-sm text-muted" style="color: var(--muted-foreground); font-size: 0.875rem; margin-bottom: 2rem;">
+                        This will download a PDF, which we recommend printing out to solve!
+                    </p>
+                    
+                    <h1>The Menagerie</h1>
+                    <p>
+                        The Menagerie is a puzzle hunt inspired by the animal residents and other attractions of George Fabyan's sprawling estate Riverbank, referenced in David Kwong's Magic and puzzle show The Enigmatist and in the Enigmas deck that led you here. The specific menagerie and other attractions mentioned in this puzzle hunt are fictional, and no knowledge of the Fabyan Villa at Riverbank, or of the Enigmatist, is required while solving.
+                    </p>
+                    
+                    <div class="divider"></div>
+                    
+                    <p>
+                        The puzzles for the Menagerie Hunt can be downloaded as a PDF from the button above. Answers to the individual puzzles can, and should, be checked with the Answer Checker to the right, which will provide additional, useful information when a correct answer is entered. A full slate of hints for each puzzle is available in the Hints section – they can be revealed one at a time, with the intention that solvers will never need to see more information than they need at the moment, and hints should be taken liberally; in many cases they will provide instructions that might have been included as part of the main instructions for the puzzle but were relegated to hint status to provide an extra challenge for solvers who want to attack the puzzles in their most challenging form.
+                    </p>
+                    
+                    <div class="divider"></div>
+                    
+                    <p style="font-weight: 600;">
+                        Happy solving!
+                    </p>
+                    <p style="color: var(--muted-foreground); font-style: italic;">
+                        (Please direct any questions, comments, or errata reports to <a href="mailto:example@example.com">example@example.com</a>)
+                    </p>
+                </div>
+
+                <!-- Right column - answer checker -->
+                <div class="card">
+                    <h2>Answer Checker</h2>
+                    <p style="color: var(--muted-foreground); font-size: 0.875rem;">
+                        Enter your answer below to check if it's correct
+                    </p>
+                    
+                    <div class="input-group">
+                        <input type="text" id="textInputOne" class="input" placeholder="Enter your answer" autocomplete="off">
+                        <button id="btn1" class="button button-primary" onclick="checkAnswer()">Submit</button>
+                    </div>
+                    
+                    <div id="imIncorrect" class="error-message">
+                        THAT IS NOT A CORRECT ANSWER
+                    </div>
+                    
+                    <!-- Result displays -->
+                    <div id="im1" class="result">
+                        <div class="result-title">✅ Correct! You found answer #1</div>
+                        <p>THE DEAN MARTIN SHOW</p>
+                        <img src="images/1.png" alt="Puzzle 1 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im2" class="result">
+                        <div class="result-title">✅ Correct! You found answer #2</div>
+                        <p>DENIAL OF SERVICE</p>
+                        <img src="images/2.png" alt="Puzzle 2 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im3" class="result">
+                        <div class="result-title">✅ Correct! You found answer #3</div>
+                        <p>FLATBED TRAILER</p>
+                        <img src="images/3.png" alt="Puzzle 3 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im4" class="result">
+                        <div class="result-title">✅ Correct! You found answer #4</div>
+                        <p>MIDTERM BREAK</p>
+                        <img src="images/4.png" alt="Puzzle 4 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im5" class="result">
+                        <div class="result-title">✅ Correct! You found answer #5</div>
+                        <p>LIFE INSURANCE</p>
+                        <img src="images/5.png" alt="Puzzle 5 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im6" class="result">
+                        <div class="result-title">✅ Correct! You found answer #6</div>
+                        <p>METEOR ORBITS</p>
+                        <img src="images/6.png" alt="Puzzle 6 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im7" class="result">
+                        <div class="result-title">✅ Correct! You found answer #7</div>
+                        <p>COSMOPOLITANS</p>
+                        <img src="images/7.png" alt="Puzzle 7 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im8" class="result">
+                        <div class="result-title">✅ Correct! You found answer #8</div>
+                        <p>POWERPOINT</p>
+                        <img src="images/8.png" alt="Puzzle 8 Hint" class="result-image">
+                    </div>
+                    
+                    <div id="im9" class="result">
+                        <div class="result-title">🎉 Congratulations! You found the final answer!</div>
+                        <p>BEAST FRIENDS FOREVER</p>
+                        <p style="margin-top: 1rem; font-weight: 500;">You've completed the puzzle hunt!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>© 2025 The Menagerie Puzzle Hunt</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Function to check puzzle answers
+        function checkAnswer() {
+            // Store all the possible answers
+            const answers = {
+                "THEDEANMARTINSHOW": "im1",
+                "DENIALOFSERVICE": "im2",
+                "FLATBEDTRAILER": "im3",
+                "MIDTERMBREAK": "im4",
+                "LIFEINSURANCE": "im5",
+                "METEORORBITS": "im6",
+                "COSMOPOLITANS": "im7",
+                "POWERPOINT": "im8",
+                "BEASTFRIENDSFOREVER": "im9"
+            };
+            
+            // Get the user input and format it
+            const inputElement = document.getElementById("textInputOne");
+            let userInput = inputElement.value;
+            userInput = userInput.toUpperCase();
+            userInput = userInput.replace(/[^A-Z]/g, '');
+            
+            // Hide all result displays
+            document.querySelectorAll('.result').forEach(function(el) {
+                el.style.display = 'none';
+                el.classList.remove('fade-in');
+            });
+            document.getElementById('imIncorrect').style.display = 'none';
+            document.getElementById('imIncorrect').classList.remove('fade-in');
+            
+            // Check if the answer is correct
+            if (answers[userInput]) {
+                // Show the corresponding result with animation
+                const resultElement = document.getElementById(answers[userInput]);
+                resultElement.style.display = 'block';
+                resultElement.classList.add('fade-in');
+                
+                // Clear the input field
+                inputElement.value = '';
+                
+                // Add focus to input for next attempt
+                inputElement.focus();
+                
+                // If it's the final answer, you could redirect
+                if (userInput === "BEASTFRIENDSFOREVER") {
+                    // In a real implementation, this would redirect:
+                    // setTimeout(() => {
+                    //     window.location.href = "https://www.puzzlehuntcards.com/dk-bf-cc-ds-9-bff";
+                    // }, 3000);
+                    console.log("Final answer found! Redirecting in 3 seconds...");
+                }
+            } else {
+                // Show incorrect message with animation
+                const errorElement = document.getElementById('imIncorrect');
+                errorElement.style.display = 'block';
+                errorElement.classList.add('fade-in');
+                
+                // Shake the input field to indicate error
+                inputElement.classList.add('shake');
+                setTimeout(() => {
+                    inputElement.classList.remove('shake');
+                }, 500);
+            }
+        }
+        
+        // Add event listener for Enter key
+        document.getElementById("textInputOne").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkAnswer();
+            }
+        });
+    </script>
+</body>
+</html>
