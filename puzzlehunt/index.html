@@ -619,7 +619,7 @@
                     </p>
                     
                     <div class="input-group">
-                        <input type="text" id="textInputOne" class="input" placeholder="Enter your answer" autocomplete="off">
+                        <input type="text" id="answerCheckerInput" class="input" placeholder="Enter your answer" autocomplete="off">
                         <button id="btn1" class="button button-primary" onclick="checkAnswer()">Submit</button>
                     </div>
                     
@@ -794,6 +794,14 @@
             }
         });
         
+        // Add event listener for Enter key on answer checker input
+        document.getElementById("answerCheckerInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkAnswer();
+            }
+        });
+        
         // Function to check puzzle answers (original functionality)
         function checkAnswer() {
             // Store all the possible answers
@@ -810,7 +818,7 @@
             };
             
             // Get the user input and format it
-            const inputElement = document.getElementById("textInputOne");
+            const inputElement = document.getElementById("answerCheckerInput");
             let userInput = inputElement.value;
             userInput = userInput.toUpperCase();
             userInput = userInput.replace(/[^A-Z]/g, '');
