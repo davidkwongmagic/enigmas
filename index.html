@@ -269,6 +269,9 @@
             background-color: var(--accent);
             display: none;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .result-title {
@@ -292,20 +295,21 @@
         .result-image-container {
             width: 100%;
             position: relative;
-            padding-bottom: 75%; /* 4:3 aspect ratio */
             margin-top: 0.75rem;
             background-color: white;
             border-radius: calc(var(--radius) - 2px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
         }
 
         .result-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+            max-width: 100%;
+            height: auto;
             border-radius: calc(var(--radius) - 2px);
+            display: block;
+            margin: 0 auto;
         }
 
         /* Error message */
