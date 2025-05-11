@@ -489,84 +489,23 @@
     </style>
 </head>
 <body>
-    <!-- Fullscreen Takeover Overlay -->
-    <div id="puzzle-overlay">
-        <h1>Welcome</h1>
-        
-        <section align="center">
-            <font size="3" align="center">Please Enter The Four Answers To The Puzzles In The Playing Cards, In Alphabetical Order, No Spaces.</font>
-            <br><br>
-            <div style="display: flex; gap: 0.5rem; width: 100%; max-width: 500px; margin: 0 auto; align-items: center;">
-                <input id="textInputOne" placeholder="Enter your answer" style="flex: 1; height: 2.5rem; padding: 0 1rem; font-size: 0.9rem; border-radius: 3px; border: 1px solid #4b5563; color: black; background-color: white; margin: 0;">
-                <button onclick="fnCheckAnswerOne()" id="bn1" style="height: 2.5rem; padding: 0 1rem; font-size: 0.9rem; background-color: #16a34a; color: white; border: none; border-radius: 3px; white-space: nowrap; margin: 0; display: flex; align-items: center;">Submit</button>
-            </div>
-            <div class="input-caption">For example, if the four answers were RED, YELLOW, GREEN, and PURPLE, you would enter GREENPURPLEREDYELLOW</div>
-            <p id="xOne" style='display: none'><font size="5" style="color:rgb(235,30,30)">&#10008;</font> SORRY, YOUR ANSWER IS INCORRECT.</p>
-            <p id="checkOne" style='display: none'><font size="5" style="color:rgb(0,150,25)"> &#10004;</font> CORRECT! Please proceed to the second password.</p>
-        </section>
-
-        <section id="hidden" style='display: none; flex-direction: column; align-items:center;'>
-            <font size="3" align="center">You need to enter one final password, secretly hidden in the Enigmas deck, to unlock the puzzle hunt! </font>
-            <br><br>
-            <div style="display: flex; gap: 0.5rem; width: 100%; max-width: 500px; margin: 0 auto; align-items: center;">
-                <input id="textInputTwo" placeholder="Enter your answer" style="flex: 1; height: 2.5rem; padding: 0 1rem; font-size: 0.9rem; border-radius: 3px; border: 1px solid #4b5563; color: black; background-color: white; margin: 0;">
-                <button onclick="fnCheckAnswerTwo()" id="btn2" style="height: 2.5rem; padding: 0 1rem; font-size: 0.9rem; background-color: #16a34a; color: white; border: none; border-radius: 3px; white-space: nowrap; margin: 0; display: flex; align-items: center;">Submit</button>
-            </div>
-            <div class="input-caption">The word ENIGMA is also secretly hidden in the deck (can you find it?), but that is not the password you need.
-            </div>
-            <p id="xTwo" style='display: none' align="center"><font size="5" style="color:rgb(235,30,30)">&#10008;</font> SORRY, YOUR ANSWER IS INCORRECT.</p>
-            <p id="checkTwo" style='display: none'><font size="5" style="color:rgb(0,150,25)"> &#10004;</font> CORRECT! Unlocking the puzzle hunt...</p>
-
-            <div data-duration-in="300" data-duration-out="100" class="hinty w-tabs">
-                <div class="tabs-menu w-tab-menu">
-                  <a data-w-tab="Tab 1" class="w-inline-block w-tab-link w--current" id="w-tabs-0-data-w-tab-0" href="#w-tabs-0-data-w-pane-0" role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="true">
-                    <div>Hints</div>
-                  </a>
-                  <a data-w-tab="Tab 2" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-1" href="#w-tabs-0-data-w-pane-1" role="tab" aria-controls="w-tabs-0-data-w-pane-1" aria-selected="false">
-                    <div>Hint 1</div>
-                  </a>
-                  <a data-w-tab="Tab 3" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-2" href="#w-tabs-0-data-w-pane-2" role="tab" aria-controls="w-tabs-0-data-w-pane-2" aria-selected="false">
-                    <div>Hint 2</div>
-                  </a>
-                  <a data-w-tab="Tab 4" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-3" href="#w-tabs-0-data-w-pane-3" role="tab" aria-controls="w-tabs-0-data-w-pane-3" aria-selected="false">
-                    <div>Hint 3</div>
-                  </a>
-                  <a data-w-tab="Tab 5" class="w-inline-block w-tab-link" tabindex="-1" id="w-tabs-0-data-w-tab-4" href="#w-tabs-0-data-w-pane-4" role="tab" aria-controls="w-tabs-0-data-w-pane-4" aria-selected="false">
-                    <div>Answer</div>
-                  </a>
-                </div>
-                <div class="tabs-content w-tab-content">
-                  <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active" id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0">
-                    <div>You need to enter one final password, secretly hidden in the Enigmas deck, to unlock the puzzle hunt! The word ENIGMA is also secretly hidden in the deck (can you find it?), but that is not the password you need.<br></div>
-                  </div>
-                  <div data-w-tab="Tab 2" class="w-tab-pane" id="w-tabs-0-data-w-pane-1" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-1">
-                    <p>The backs of the cards are all identical. The password can be found, in code, on the back of any card.</p>
-                  </div>
-                  <div data-w-tab="Tab 3" class="w-tab-pane" id="w-tabs-0-data-w-pane-2" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-2">
-                    <div>The password is encoded by a string of items that at first glance might look identical, but are not.<br></div>
-                  </div>
-                  <div data-w-tab="Tab 4" class="w-tab-pane" id="w-tabs-0-data-w-pane-3" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-3">
-                    <div>The dots and triangles that run around the edge of the back design can be interpreted as Morse Code: single triangles separate the dots into dots (one dot) and dashes (two dots), and double triangles separate letters. The message runs along the top and right side, and then is repeated along the bottom and left side.</div>
-                  </div>
-                  <div data-w-tab="Tab 5" class="w-tab-pane" id="w-tabs-0-data-w-pane-4" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-4">
-                    <div>The Password is WELLSPOTTED</div>
-                  </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    <script>
+        if (!localStorage.getItem('menageriePasswordPassed')) {
+            window.location.href = '/password.html';
+        }
+    </script>
 
     <div class="layout">
         <!-- Header -->
         <header class="header">
             <div class="container">
                 <nav class="navbar">
-                    <a href="index.html" class="logo">The Menagerie</a>
+                    <a href="/index.html" class="logo">The Menagerie</a>
                     <div class="nav-group">
-                        <a href="index.html" class="nav-link active">Home</a>
-                        <a href="hall-of-fame.html" class="nav-link">Hall of Fame</a>
-                        <a href="hints.html" class="nav-link">Hints</a>
-                        <a href="info.html" class="nav-link">Info / Errata</a>
+                        <a href="/index.html" class="nav-link active">Home</a>
+                        <a href="/hall-of-fame.html" class="nav-link">Hall of Fame</a>
+                        <a href="/hints.html" class="nav-link">Hints</a>
+                        <a href="/info.html" class="nav-link">Info / Errata</a>
                     </div>
                 </nav>
             </div>
@@ -593,7 +532,7 @@
                     
                     <h1>The Menagerie</h1>
                     <p>
-                        The Menagerie is a puzzle hunt inspired by the animal residents and other attractions of George Fabyan's sprawling estate Riverbank, referenced in David Kwong's Magic and puzzle show The Enigmatist and in the Enigmas deck that led you here. The specific menagerie and other attractions mentioned in this puzzle hunt are fictional, and no knowledge of the Fabyan Villa at Riverbank, or of the Enigmatist, is required while solving.
+                        The Menagerie is a puzzle hunt by Dave Shukan inspired by the animal residents and other attractions of George Fabyan's fantastical estate Riverbank, referenced in David Kwong's magic and puzzle show, The Enigmatist, and in the Enigmas deck that led you here. The specific menagerie and other attractions mentioned in this puzzle hunt are fictional, and no knowledge of the Fabyan Villa at Riverbank, or of The Enigmatist, is required while solving.
                     </p>
                     
                     <div class="divider"></div>
@@ -607,9 +546,7 @@
                     <p style="font-weight: 600;">
                         Happy solving!
                     </p>
-                    <p style="color: var(--muted-foreground); font-style: italic;">
-                        (Please direct any questions, comments, or errata reports to David at <a href="mailto:dshukan@gmail.com">dshukan@gmail.com</a>)
-                    </p>
+                  
                 </div>
 
                 <!-- Right column - answer checker -->
@@ -620,7 +557,7 @@
                     </p>
                     
                     <div class="input-group">
-                        <input type="text" id="textInputOne" class="input" placeholder="Enter your answer" autocomplete="off">
+                        <input type="text" id="answerCheckerInput" class="input" placeholder="Enter your answer" autocomplete="off">
                         <button id="btn1" class="button button-primary" onclick="checkAnswer()">Submit</button>
                     </div>
                     
@@ -716,85 +653,6 @@
     </div>
     
     <script>
-        // Password checking functions
-        function fnCheckAnswerOne() {
-            const input = document.getElementById("textInputOne").value.toUpperCase().replace(/[^A-Z]/g, '');
-            const correctAnswer = "CREDITFLASHINDEXREPORT";
-            
-            document.getElementById("xOne").style.display = "none";
-            document.getElementById("checkOne").style.display = "none";
-            
-            if (input === correctAnswer) {
-                document.getElementById("checkOne").style.display = "block";
-                document.getElementById("hidden").style.display = "flex";
-                document.getElementById("textInputTwo").focus();
-            } else {
-                document.getElementById("xOne").style.display = "block";
-            }
-        }
-        
-        function fnCheckAnswerTwo() {
-            const input = document.getElementById("textInputTwo").value.toUpperCase().replace(/[^A-Z]/g, '');
-            const correctAnswer = "WELLSPOTTED";
-            
-            document.getElementById("xTwo").style.display = "none";
-            document.getElementById("checkTwo").style.display = "none";
-            
-            if (input === correctAnswer) {
-                document.getElementById("checkTwo").style.display = "block";
-                // After a short delay, remove the overlay
-                setTimeout(() => {
-                    document.getElementById("puzzle-overlay").style.display = "none";
-                }, 2000);
-            } else {
-                document.getElementById("xTwo").style.display = "block";
-            }
-        }
-        
-        // Tab handling for hints
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabLinks = document.querySelectorAll('.w-tab-link');
-            const tabPanes = document.querySelectorAll('.w-tab-pane');
-            
-            tabLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const tabId = this.getAttribute('aria-controls');
-                    
-                    // Remove active class from all tabs and panes
-                    tabLinks.forEach(el => {
-                        el.classList.remove('w--current');
-                        el.setAttribute('aria-selected', 'false');
-                    });
-                    
-                    tabPanes.forEach(el => {
-                        el.classList.remove('w--tab-active');
-                    });
-                    
-                    // Add active class to current tab and pane
-                    this.classList.add('w--current');
-                    this.setAttribute('aria-selected', 'true');
-                    document.getElementById(tabId).classList.add('w--tab-active');
-                });
-            });
-        });
-        
-        // Add event listeners for Enter key
-        document.getElementById("textInputOne").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                fnCheckAnswerOne();
-            }
-        });
-        
-        document.getElementById("textInputTwo").addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                fnCheckAnswerTwo();
-            }
-        });
-        
         // Function to check puzzle answers (original functionality)
         function checkAnswer() {
             // Store all the possible answers
@@ -811,7 +669,7 @@
             };
             
             // Get the user input and format it
-            const inputElement = document.getElementById("textInputOne");
+            const inputElement = document.getElementById("answerCheckerInput");
             let userInput = inputElement.value;
             userInput = userInput.toUpperCase();
             userInput = userInput.replace(/[^A-Z]/g, '');
