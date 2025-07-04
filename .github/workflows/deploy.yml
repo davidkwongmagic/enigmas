@@ -36,14 +36,10 @@ jobs:
         working-directory: ./menagerie-puzzle-hunt
         run: npm run build
         
-      - name: Copy Next.js build to root
-        run: |
-          cp -r ./menagerie-puzzle-hunt/out/* ./
-          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: ./menagerie-puzzle-hunt/out
 
   deploy:
     environment:
