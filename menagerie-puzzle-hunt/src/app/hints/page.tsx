@@ -428,15 +428,7 @@ export default function HintsPage() {
                   <h2 className="text-2xl font-bold text-emerald-600 mb-6 font-montserrat">Select a Puzzle</h2>
                   <p className="text-gray-600">Choose a puzzle from the left to view its hints. Hints are provided progressively - start with Hint 1 and only move to the next hint if you need more help.</p>
                   
-                  <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-                    <div className="flex items-center">
-                      <span className="text-blue-500 text-2xl mr-3">💡</span>
-                      <div>
-                        <h3 className="text-blue-800 font-semibold">Hint Strategy</h3>
-                        <p className="text-blue-700 text-sm">Use hints sparingly to maintain the challenge, but don't hesitate to use them if you're truly stuck!</p>
-                      </div>
-                    </div>
-                  </div>
+
                 </>
               ) : (
                 <>
