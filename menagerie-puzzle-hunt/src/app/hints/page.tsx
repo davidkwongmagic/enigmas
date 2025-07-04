@@ -460,12 +460,7 @@ export default function HintsPage() {
                     </button>
                   )}
 
-                  <button
-                    onClick={() => setSelectedPuzzle(null)}
-                    className="mt-4 w-full p-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-all duration-300"
-                  >
-                    ← Back to Puzzle List
-                  </button>
+
                 </>
               )}
             </div>
