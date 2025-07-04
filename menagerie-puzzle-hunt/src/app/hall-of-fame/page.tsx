@@ -28,17 +28,11 @@ export default function HallOfFamePage() {
             Hall of Fame
           </h1>
           
-          {hallOfFameNames.length > 0 ? (
-            <ul className="text-lg text-gray-700 space-y-2">
-              {hallOfFameNames.map((name, index) => (
-                <li key={index}>{name}</li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-center text-gray-500 text-lg">
-              No one has completed the puzzle hunt yet. Be the first!
-            </p>
-          )}
+          <ul className="text-lg text-gray-700 space-y-2">
+            {hallOfFameNames.map((name, index) => (
+              <li key={index}>{name}</li>
+            ))}
+          </ul>
         </div>
       </main>
     </div>
