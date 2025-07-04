@@ -14,7 +14,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex flex-col sm:flex-row items-center justify-between py-4 sm:py-6 gap-4 sm:gap-0">
           <Link href="/" className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors font-montserrat">
-            🦁 The Menagerie
+            The Menagerie
           </Link>
           <div className="flex items-center space-x-8">
             <Link 

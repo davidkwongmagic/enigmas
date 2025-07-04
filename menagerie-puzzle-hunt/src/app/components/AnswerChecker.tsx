@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface AnswerCheckerProps {
   className?: string;
@@ -12,6 +13,7 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
   const [result, setResult] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [solvedPuzzles, setSolvedPuzzles] = useState<Set<number>>(new Set());
+  const [showFinalImage, setShowFinalImage] = useState(false);
 
   useEffect(() => {
     // Load solved puzzles from localStorage
@@ -38,6 +40,8 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
     'powerpoint': 8,
   };
 
+  const finalAnswer = 'beast friends forever';
+
   const checkAnswer = () => {
     setIsLoading(true);
     const cleanAnswer = answer.toLowerCase().trim();
@@ -49,6 +53,10 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
         saveProgress(puzzleNumber);
         setAnswer('');
         onCorrectAnswer(`puzzle-${puzzleNumber}`, true);
+      } else if (cleanAnswer === finalAnswer) {
+        setResult(`🎉 Congratulations! You found the final answer!`);
+        setShowFinalImage(true);
+        setAnswer('');
       } else if (cleanAnswer === '') {
         setResult('Please enter an answer!');
       } else {
@@ -128,6 +136,28 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
               </p>
             </div>
           )}
+        </div>
+      )}
+
+      {showFinalImage && (
+        <div className="mt-6 p-6 bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-300 rounded-lg">
+          <h3 className="text-2xl font-bold text-amber-800 mb-4 text-center">The Menagerie</h3>
+          <div className="rounded-lg overflow-hidden shadow-lg">
+            <Image
+              src="/images/menagerie.jpg"
+              alt="The Menagerie"
+              width={600}
+              height={400}
+              className="w-full h-auto"
+            />
+          </div>
+          <p className="mt-4 text-center text-amber-700 font-medium">
+            Well done! You've completed The Menagerie Puzzle Hunt!
+          </p>
+          <p className="mt-2 text-center text-amber-600 text-sm">
+            Please email your name to info@davidkwongmagic.com and dshukan@gmail.com 
+            with your final answer to be added to our Hall of Fame.
+          </p>
         </div>
       )}
     </div>

@@ -107,22 +107,6 @@ export default function Home() {
           <div className="space-y-8">
             {/* Answer Checker */}
             <AnswerChecker onCorrectAnswer={updateProgress} />
-            
-            {/* Quick Links Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-xl font-bold text-emerald-600 mb-4 font-montserrat">Quick Links</h3>
-              <div className="space-y-3">
-                <a href="/hints" className="flex items-center p-3 rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 transition-all group">
-                  <span className="text-emerald-600 group-hover:text-emerald-700 font-medium">💡 Puzzle Hints</span>
-                </a>
-                <a href="/hall-of-fame" className="flex items-center p-3 rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 transition-all group">
-                  <span className="text-emerald-600 group-hover:text-emerald-700 font-medium">🏆 Hall of Fame</span>
-                </a>
-                <a href="/info" className="flex items-center p-3 rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 hover:from-emerald-100 hover:to-emerald-200 transition-all group">
-                  <span className="text-emerald-600 group-hover:text-emerald-700 font-medium">📋 Info & Errata</span>
-                </a>
-              </div>
-            </div>
 
             {/* Progress Overview */}
             <div className="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-[1.01] transition-transform duration-300">
