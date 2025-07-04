@@ -71,36 +71,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Puzzle Grid */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 transform hover:scale-[1.01] transition-transform duration-300">
-              <h2 className="text-3xl font-bold text-emerald-600 mb-8 font-montserrat">Puzzle Environments</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {Array.from({length: 8}, (_, i) => i + 1).map((puzzleNum) => (
-                  <div key={puzzleNum} className="group cursor-pointer">
-                    <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-4 group-hover:from-emerald-100 group-hover:to-emerald-200 transition-all duration-300">
-                      <Image
-                        src={`/images/${puzzleNum}.png`}
-                        alt={`Puzzle ${puzzleNum}`}
-                        width={200}
-                        height={300}
-                        className="w-full h-auto rounded-lg shadow-md group-hover:shadow-lg transition-shadow"
-                        priority={puzzleNum <= 4}
-                      />
-                      <div className="mt-3 text-center">
-                        <span className="text-lg font-semibold text-emerald-700">Puzzle {puzzleNum}</span>
-                        {progress[`puzzle-${puzzleNum}`] && (
-                          <div className="mt-1">
-                            <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                              ✓ Solved
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
           </div>
 
           {/* Right Column - Sidebar */}
@@ -108,48 +79,7 @@ export default function Home() {
             {/* Answer Checker */}
             <AnswerChecker onCorrectAnswer={updateProgress} />
 
-            {/* Progress Overview */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-xl font-bold text-emerald-600 mb-4 font-montserrat">Your Progress</h3>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex justify-between text-sm font-medium text-gray-700 mb-2">
-                    <span>Puzzles Solved</span>
-                    <span>{Object.values(progress).filter(Boolean).length}/8</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-emerald-500 h-2 rounded-full transition-all duration-500 ease-out"
-                      style={{ width: `${(Object.values(progress).filter(Boolean).length / 8) * 100}%` }}
-                    />
-                  </div>
-                </div>
-                
-                {Object.values(progress).filter(Boolean).length === 8 && (
-                  <div className="mt-4 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
-                    <p className="text-green-800 font-medium text-center">
-                      🎉 All puzzles solved! Ready for the meta challenge!
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
 
-            {/* Puzzle Hunt Information */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-[1.01] transition-transform duration-300">
-              <h3 className="text-xl font-bold text-emerald-600 mb-4 font-montserrat">About the Hunt</h3>
-              <div className="text-gray-700 text-sm space-y-3">
-                <p>
-                  The Menagerie Puzzle Hunt features eight unique environments, each with its own style and type of puzzle to solve.
-                </p>
-                <p>
-                  Each puzzle contains hidden elements and clues that, when properly interpreted, reveal the answers you need.
-                </p>
-                <p className="text-xs text-gray-500">
-                  Use the answer checker on this page to submit your solutions and track your progress.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </main>

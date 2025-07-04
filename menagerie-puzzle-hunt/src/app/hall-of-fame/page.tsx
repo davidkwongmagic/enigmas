@@ -12,7 +12,7 @@ export default function HallOfFamePage() {
   }
 
   // This would typically come from a database or API
-  const hallOfFameNames = [
+  const hallOfFameNames: string[] = [
     // Add names here as people complete the puzzle hunt
     // "John Doe",
     // "Jane Smith",
