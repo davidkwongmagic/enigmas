@@ -98,148 +98,29 @@
 
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div class="bg-white rounded-2xl shadow-lg card-hover p-8 lg:p-12">
-            <!-- Header Section -->
-            <div class="text-center mb-12">
-                <div class="flex justify-center mb-6">
-                    <div class="trophy-shine text-8xl p-4 rounded-full">
-                        🏆
-                    </div>
-                </div>
-                <h1 class="text-4xl lg:text-5xl font-bold text-primary-600 mb-4 font-montserrat">Hall of Fame</h1>
-                <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                    Celebrating the brilliant minds who have successfully completed The Menagerie Puzzle Hunt and solved all mysteries within the Enigma Deck.
-                </p>
-            </div>
-
-            <!-- Achievement Stats -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 border border-yellow-200 text-center">
-                    <div class="text-3xl text-yellow-600 mb-2">🎯</div>
-                    <div class="text-2xl font-bold text-yellow-800">8</div>
-                    <div class="text-yellow-700 font-medium">Total Puzzles</div>
-                </div>
-                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200 text-center">
-                    <div class="text-3xl text-green-600 mb-2">🧩</div>
-                    <div class="text-2xl font-bold text-green-800">1</div>
-                    <div class="text-green-700 font-medium">Meta Challenge</div>
-                </div>
-                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 text-center">
-                    <div class="text-3xl text-blue-600 mb-2">👑</div>
-                    <div class="text-2xl font-bold text-blue-800" id="solverCount">0</div>
-                    <div class="text-blue-700 font-medium">Champions</div>
-                </div>
-            </div>
-
+        <div class="bg-white rounded-2xl shadow-lg p-8 lg:p-12">
+            <h1 class="text-4xl lg:text-5xl font-bold text-primary-600 mb-8 font-montserrat text-center">Hall of Fame</h1>
+            
             <!-- Hall of Fame List -->
-            <div class="space-y-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center font-montserrat">🌟 Our Champions 🌟</h2>
-                
-                <!-- Placeholder for no solvers yet -->
-                <div id="noSolvers" class="text-center py-12">
-                    <div class="text-6xl mb-4">🎭</div>
-                    <h3 class="text-2xl font-bold text-gray-600 mb-4">The Hunt Awaits Its First Champion</h3>
-                    <p class="text-gray-500 leading-relaxed max-w-md mx-auto">
-                        Be the first to complete all eight puzzles and the meta challenge to earn your place in this prestigious hall!
-                    </p>
-                    <div class="mt-8">
-                        <a href="/enigmas/index.html" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105">
-                            <span class="mr-2">🎯</span>
-                            Start Your Quest
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Template for future solvers -->
-                <div id="solversList" class="space-y-4 hidden">
-                    <!-- Solvers will be added here dynamically -->
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div class="mt-16 bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl p-8 border border-primary-200 text-center">
-                <h3 class="text-2xl font-bold text-primary-700 mb-4 font-montserrat">Ready to Join the Elite?</h3>
-                <p class="text-gray-700 mb-6 leading-relaxed">
-                    Complete all eight puzzles and solve the final meta challenge to earn your place among the puzzle hunt champions. 
-                    Email your final answer "BEAST FRIENDS FOREVER" along with your name to secure your spot in history!
-                </p>
-                <div class="space-y-3 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-                    <a href="mailto:info@davidkwongmagic.com" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105">
-                        <span class="mr-2">📧</span>
-                        info@davidkwongmagic.com
-                    </a>
-                    <a href="mailto:dshukan@gmail.com" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105">
-                        <span class="mr-2">📧</span>
-                        dshukan@gmail.com
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Navigation -->
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="/enigmas/index.html" class="block p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200 hover:from-green-100 hover:to-green-200 transition-all duration-300 transform hover:scale-105">
-                    <div class="text-center">
-                        <span class="text-3xl text-green-600 block mb-2">🎯</span>
-                        <h3 class="text-lg font-semibold text-green-800">Start the Hunt</h3>
-                        <p class="text-green-600 text-sm">Begin your puzzle journey</p>
-                    </div>
-                </a>
-                
-                <a href="/enigmas/hints.html" class="block p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200 hover:from-blue-100 hover:to-blue-200 transition-all duration-300 transform hover:scale-105">
-                    <div class="text-center">
-                        <span class="text-3xl text-blue-600 block mb-2">💡</span>
-                        <h3 class="text-lg font-semibold text-blue-800">Need Hints?</h3>
-                        <p class="text-blue-600 text-sm">Get help when you're stuck</p>
-                    </div>
-                </a>
-            </div>
+            <ul id="solversList" class="text-lg text-gray-700 space-y-2">
+                <!-- Names will be added here -->
+            </ul>
         </div>
     </main>
 
 
     <script>
         // Function to add solvers to the hall of fame
-        function addSolver(name, date, teamName = null) {
+        function addSolver(name) {
             const solversList = document.getElementById('solversList');
-            const noSolvers = document.getElementById('noSolvers');
-            const solverCount = document.getElementById('solverCount');
-            
-            // Hide "no solvers" message and show list
-            noSolvers.classList.add('hidden');
-            solversList.classList.remove('hidden');
-            
-            // Create solver card
-            const solverCard = document.createElement('div');
-            solverCard.className = 'bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-xl p-6 border border-yellow-200 transform hover:scale-102 transition-all duration-300';
-            
-            solverCard.innerHTML = `
-                <div class="flex items-center">
-                    <div class="text-3xl mr-4">🏆</div>
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-yellow-800">${name}</h3>
-                        ${teamName ? `<p class="text-yellow-700 font-medium">Team: ${teamName}</p>` : ''}
-                        <p class="text-yellow-600 text-sm">Completed on ${date}</p>
-                    </div>
-                    <div class="text-2xl">👑</div>
-                </div>
-            `;
-            
-            solversList.appendChild(solverCard);
-            
-            // Update counter
-            const currentCount = parseInt(solverCount.textContent);
-            solverCount.textContent = currentCount + 1;
+            const listItem = document.createElement('li');
+            listItem.textContent = name;
+            solversList.appendChild(listItem);
         }
         
         // Example of how to add solvers (this would typically be loaded from a database)
-        // addSolver("Alice Johnson", "March 15, 2024");
-        // addSolver("Bob Smith", "March 18, 2024", "The Puzzle Masters");
-        
-        // Check if there are any solvers and update display accordingly
-        document.addEventListener('DOMContentLoaded', function() {
-            // This is where you would load actual solver data from your backend
-            // For now, we'll show the "no solvers" message
-        });
+        // addSolver("John Doe");
+        // addSolver("Jane Smith");
     </script>
 </body>
 </html> 
