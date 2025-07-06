@@ -27,26 +27,9 @@ function HomePage() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 font-montserrat">
-            🦁 The Menagerie Puzzle Hunt
+            Welcome!
           </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-            A special eight-puzzle hunt using the beautiful{' '}
-            <a
-              href="https://store.theory11.com/products/enigma-deck"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary-600 hover:text-primary-700 font-medium underline"
-            >
-              Enigma Deck
-            </a>{' '}
-            from Theory11. Solve the puzzles hidden in each card image!
-          </p>
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 max-w-2xl mx-auto">
-            <p className="text-yellow-800 text-sm">
-              <span className="font-semibold">💡 Tip:</span> Each puzzle image contains a hidden message or pattern. 
-              Look carefully at details, text, symbols, and arrangements!
-            </p>
-          </div>
+          <p className="text-gray-600 text-sm">This is a description.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
