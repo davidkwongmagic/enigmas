@@ -126,7 +126,7 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
       {/* Show final image when complete */}
       {showFinalImage && (
         <div className="mt-6 p-6 bg-gradient-to-r from-yellow-50 to-amber-50 border border-yellow-300 rounded-lg">
-          <h3 className="text-2xl font-bold text-amber-800 mb-4 text-center">You've successfully completed the hunt!</h3>
+          <h3 className="text-2xl font-bold text-amber-800 mb-4 text-center">You&apos;ve successfully completed the hunt!</h3>
           <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
               src="/images/menagerie.jpg"
