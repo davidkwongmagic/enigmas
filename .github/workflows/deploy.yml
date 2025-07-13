@@ -26,20 +26,17 @@ jobs:
         with:
           node-version: "20"
           cache: "npm"
-          cache-dependency-path: menagerie-puzzle-hunt/package-lock.json
           
       - name: Install dependencies
-        working-directory: ./menagerie-puzzle-hunt
         run: npm ci
         
       - name: Build Next.js
-        working-directory: ./menagerie-puzzle-hunt
         run: npm run build
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./menagerie-puzzle-hunt/out
+          path: ./out
 
   deploy:
     environment:
