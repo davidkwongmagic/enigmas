@@ -1,21 +1,21 @@
-import React from "react";
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from './context/AuthContext';
 
-const inter = Inter({ 
-  subsets: ["latin"],
+const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
 });
 
-const montserrat = Montserrat({ 
+const montserrat = Montserrat({
+  variable: "--font-montserrat", 
   subsets: ["latin"],
-  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
   title: "The Menagerie Puzzle Hunt",
-  description: "A special eight-puzzle hunt using the beautiful Enigma Deck from Theory11",
+  description: "An enigmatic puzzle hunt featuring Theory11's Enigma Deck",
 };
 
 export default function RootLayout({
@@ -25,11 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${montserrat.variable} font-inter antialiased`}>
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      <body className={`${inter.variable} ${montserrat.variable} antialiased`}>
+        <AuthProvider>
           {children}
-        </div>
+        </AuthProvider>
       </body>
     </html>
   );
-} 
+}

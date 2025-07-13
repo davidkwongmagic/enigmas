@@ -14,24 +14,34 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex flex-col sm:flex-row items-center justify-between py-4 sm:py-6 gap-4 sm:gap-0">
           <Link href="/" className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors font-montserrat">
-            🦁 The Menagerie
+            The Menagerie
           </Link>
           <div className="flex items-center space-x-8">
             <Link 
               href="/" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/') 
-                  ? 'text-gray-700 after:content-[""] after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-gradient-to-r after:from-primary-500 after:to-primary-600 after:rounded-sm' 
+                  ? 'text-gray-700' 
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
               Home
             </Link>
             <Link 
+              href="/answer-checker" 
+              className={`nav-underline font-medium transition-colors relative ${
+                isActive('/answer-checker') 
+                  ? 'text-gray-700'
+                  : 'text-gray-600 hover:text-primary-600'
+              }`}
+            >
+              Answer Checker
+            </Link>
+            <Link 
               href="/hall-of-fame" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/hall-of-fame') 
-                  ? 'text-gray-700 after:content-[""] after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-gradient-to-r after:from-primary-500 after:to-primary-600 after:rounded-sm' 
+                  ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
@@ -41,7 +51,7 @@ export default function Header() {
               href="/hints" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/hints') 
-                  ? 'text-gray-700 after:content-[""] after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-gradient-to-r after:from-primary-500 after:to-primary-600 after:rounded-sm' 
+                  ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
@@ -51,7 +61,7 @@ export default function Header() {
               href="/info" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/info') 
-                  ? 'text-gray-700 after:content-[""] after:absolute after:bottom-[-8px] after:left-0 after:right-0 after:h-[3px] after:bg-gradient-to-r after:from-primary-500 after:to-primary-600 after:rounded-sm' 
+                  ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
@@ -62,4 +72,4 @@ export default function Header() {
       </div>
     </header>
   );
-} 
+}

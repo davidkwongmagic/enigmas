@@ -1,36 +1,36 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  setAuthenticated: (value: boolean) => void;
+  login: () => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export function AuthProvider({ children }: { children: ReactNode }) {
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Check localStorage for authentication
-    const authStatus = localStorage.getItem('menageriePasswordPassed');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
+    // Check if user is already authenticated on page load
+    const isAuth = localStorage.getItem('menageriePasswordPassed') === 'true';
+    setIsAuthenticated(isAuth);
   }, []);
 
-  const setAuthenticated = (value: boolean) => {
-    setIsAuthenticated(value);
-    if (value) {
-      localStorage.setItem('menageriePasswordPassed', 'true');
-    } else {
-      localStorage.removeItem('menageriePasswordPassed');
-    }
+  const login = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('menageriePasswordPassed', 'true');
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('menageriePasswordPassed');
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setAuthenticated }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -42,4 +42,4 @@ export function useAuth() {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-} 
+}
