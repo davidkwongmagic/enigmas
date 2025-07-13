@@ -4,6 +4,12 @@ import { useAuth } from './context/AuthContext';
 import PasswordGate from './components/PasswordGate';
 import Header from './components/Header';
 
+// Helper function to handle basePath for images
+const getImagePath = (path: string) => {
+  const basePath = process.env.NODE_ENV === 'production' ? '/enigmas' : '';
+  return `${basePath}${path}`;
+};
+
 export default function Home() {
   const { isAuthenticated } = useAuth();
 
@@ -44,7 +50,7 @@ export default function Home() {
               {/* Download Button */}
               <div className="mt-8">
                 <a 
-                  href="/images/Menagerie Puzzle Hunt (1).pdf" 
+                  href={getImagePath("/images/Menagerie Puzzle Hunt (1).pdf")} 
                   download="Menagerie Puzzle Hunt.pdf"
                   className="block w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white text-center py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg"
                 >

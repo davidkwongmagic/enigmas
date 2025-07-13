@@ -3,6 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+// Helper function to handle basePath for images
+const getImagePath = (path: string) => {
+  const basePath = process.env.NODE_ENV === 'production' ? '/enigmas' : '';
+  return `${basePath}${path}`;
+};
+
 interface AnswerCheckerProps {
   className?: string;
   onCorrectAnswer: (cardName: string, solved: boolean) => void;
@@ -114,7 +120,7 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
       {currentPiece && (
         <div className="mt-6 flex justify-center">
           <Image
-            src={`/images/${currentPiece}.png`}
+            src={getImagePath(`/images/${currentPiece}.png`)}
             alt={`Puzzle piece ${currentPiece}`}
             width={400}
             height={400}
@@ -129,7 +135,7 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
           <h3 className="text-2xl font-bold text-amber-800 mb-4 text-center">You&apos;ve successfully completed the hunt!</h3>
           <div className="rounded-lg overflow-hidden shadow-lg">
             <Image
-              src="/images/menagerie.jpg"
+              src={getImagePath("/images/menagerie.jpg")}
               alt="The Menagerie"
               width={600}
               height={400}
