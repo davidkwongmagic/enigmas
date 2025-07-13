@@ -151,7 +151,7 @@ export default function PasswordGate() {
                 </form>
                 
                 <p className="text-gray-400 text-xs">
-                  The word ENIGMA is also secretly hidden in the deck (can you find it?), but that is not the password you need.
+                  You need to enter one final password, secretly hidden in the Enigmas deck, to unlock the puzzle hunt! The word ENIGMA is also encoded in the bookshelves (can you figure out the code?) but that is not the password you need.
                 </p>
                 
                 {/* Second Result Messages */}
