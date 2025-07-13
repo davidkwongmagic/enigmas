@@ -68,7 +68,7 @@ export default function PasswordGate() {
         {/* Main Container */}
         <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-8 lg:p-12 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8 font-montserrat">
-            Welcome to The Menagerie
+            Puzzle Hunt
           </h1>
           
           {/* First Password Section */}
