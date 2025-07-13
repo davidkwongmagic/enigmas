@@ -24,7 +24,7 @@ export default function Home() {
             </h1>
             <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
               <p>
-                The Menagerie is a puzzle hunt inspired by the animal residents and other attractions of George Fabyan&apos;s sprawling estate Riverbank, referenced in David Kwong&apos;s Magic and puzzle show The Enigmatist and in the Enigmas deck that led you here. The specific menagerie and other attractions mentioned in this puzzle hunt are fictional, and no knowledge of the Fabyan Villa at Riverbank, or of the Enigmatist, is required while solving.
+                The Menagerie is a puzzle hunt by Dave Shukan inspired by the animal residents and other attractions of George Fabyan&apos;s fantastical estate Riverbank, referenced in David Kwong&apos;s magic and puzzle show, The Enigmatist, and in the Enigmas deck that led you here. The specific menagerie and other attractions mentioned in this puzzle hunt are fictional, and no knowledge of the Fabyan Villa at Riverbank, or of The Enigmatist, is required while solving.
               </p>
               
               <p>
@@ -39,9 +39,7 @@ export default function Home() {
                 <strong>Happy solving!</strong>
               </p>
               
-              <p className="text-sm text-gray-600">
-                (Please direct any questions, comments, or errata reports to dshukan@gmail.com)
-              </p>
+
 
               {/* Download Button */}
               <div className="mt-8">
