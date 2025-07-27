@@ -34,11 +34,11 @@ export default function Home() {
               </p>
               
               <p>
-                The puzzles for the Menagerie Hunt can be downloaded as a PDF from the button below. Answers to the individual puzzles can, and should, be checked with the <a href="/answer-checker" className="text-emerald-600 hover:text-emerald-700 underline">Answer Checker</a>, which will provide additional, useful information when a correct answer is entered.
+                The puzzles for the Menagerie Hunt can be downloaded as a PDF from the button below. Answers to the individual puzzles can, and should, be checked with the <a href="answer-checker" className="text-emerald-600 hover:text-emerald-700 underline">Answer Checker</a>, which will provide additional, useful information when a correct answer is entered.
               </p>
               
               <p>
-                A full slate of hints for each puzzle is available in the <a href="/hints" className="text-emerald-600 hover:text-emerald-700 underline">Hints section</a> – they can be revealed one at a time, with the intention that solvers will never need to see more information than they need at the moment, and hints should be taken liberally; in many cases they will provide instructions that might have been included as part of the main instructions for the puzzle but were relegated to hint status to provide an extra challenge for solvers who want to attack the puzzles in their most challenging form.
+                A full slate of hints for each puzzle is available in the <a href="hints" className="text-emerald-600 hover:text-emerald-700 underline">Hints section</a> – they can be revealed one at a time, with the intention that solvers will never need to see more information than they need at the moment, and hints should be taken liberally; in many cases they will provide instructions that might have been included as part of the main instructions for the puzzle but were relegated to hint status to provide an extra challenge for solvers who want to attack the puzzles in their most challenging form.
               </p>
               
               <p>

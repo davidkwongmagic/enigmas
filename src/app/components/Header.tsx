@@ -28,7 +28,7 @@ export default function Header() {
               Home
             </Link>
             <Link 
-              href="/answer-checker" 
+              href="answer-checker" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/answer-checker') 
                   ? 'text-gray-700'
@@ -38,7 +38,7 @@ export default function Header() {
               Answer Checker
             </Link>
             <Link 
-              href="/hall-of-fame" 
+              href="hall-of-fame" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/hall-of-fame') 
                   ? 'text-gray-700'
@@ -48,7 +48,7 @@ export default function Header() {
               Hall of Fame
             </Link>
             <Link 
-              href="/hints" 
+              href="hints" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/hints') 
                   ? 'text-gray-700'
@@ -58,7 +58,7 @@ export default function Header() {
               Hints
             </Link>
             <Link 
-              href="/info" 
+              href="info" 
               className={`nav-underline font-medium transition-colors relative ${
                 isActive('/info') 
                   ? 'text-gray-700'
