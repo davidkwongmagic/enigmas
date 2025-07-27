@@ -9,6 +9,11 @@ const getImagePath = (path: string) => {
   return `${basePath}${path}`;
 };
 
+// Helper function to normalize answers - remove spaces and convert to lowercase
+const normalizeAnswer = (answer: string): string => {
+  return answer.toLowerCase().replace(/\s+/g, '');
+};
+
 interface AnswerCheckerProps {
   className?: string;
   onCorrectAnswer: (cardName: string, solved: boolean) => void;
@@ -37,22 +42,23 @@ export default function AnswerChecker({ className = '', onCorrectAnswer }: Answe
     localStorage.setItem('menagerieSolvedPuzzles', JSON.stringify([...newSolved]));
   };
 
+  // All correct answers normalized (no spaces, lowercase)
   const correctAnswers: { [key: string]: number } = {
-    'the dean martin show': 1,
-    'denial of service': 2,
-    'flatbed trailer': 3,
-    'midterm break': 4,
-    'life insurance': 5,
-    'meteor orbits': 6,
+    'thedeanmartinshow': 1,
+    'denialofservice': 2,
+    'flatbedtrailer': 3,
+    'midtermbreak': 4,
+    'lifeinsurance': 5,
+    'meteororbits': 6,
     'cosmopolitans': 7,
     'powerpoint': 8,
   };
 
-  const finalAnswer = 'beast friends forever';
+  const finalAnswer = 'beastfriendsforever';
 
   const checkAnswer = () => {
     setIsLoading(true);
-    const cleanAnswer = answer.toLowerCase().trim();
+    const cleanAnswer = normalizeAnswer(answer);
 
     setTimeout(() => {
       if (correctAnswers[cleanAnswer]) {
