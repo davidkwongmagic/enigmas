@@ -13,6 +13,7 @@ export default function HallOfFamePage() {
 
   const hallOfFameNames: string[] = [
     'Ben Zimmer',
+    'Billy French',
     'Chris Haimson',
     'Christopher Bow',
     'Circles All the Way Down (Summer Herrick & Jonathan McCue)',
