@@ -13,7 +13,7 @@ export default function Header() {
     <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex flex-col sm:flex-row items-center justify-between py-4 sm:py-6 gap-4 sm:gap-0">
-          <Link href="/" className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors font-montserrat">
+          <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-gray-900 transition-colors font-montserrat">
             The Menagerie
           </Link>
           <div className="flex items-center space-x-8">

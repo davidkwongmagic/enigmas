@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '../context/AuthContext';
 
 export default function PasswordGate() {
   const { login } = useAuth();
+  const router = useRouter();
   const [firstPassword, setFirstPassword] = useState('');
   const [secondPassword, setSecondPassword] = useState('');
   const [firstResult, setFirstResult] = useState('');
@@ -46,6 +48,7 @@ export default function PasswordGate() {
       setSecondResult('correct');
       setTimeout(() => {
         login();
+        router.push('/');
       }, 1500);
     } else {
       setSecondResult('incorrect');
