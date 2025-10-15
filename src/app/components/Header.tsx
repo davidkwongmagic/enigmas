@@ -27,40 +27,40 @@ export default function Header() {
             >
               Home
             </Link>
-            <Link 
-              href="answer-checker" 
+            <Link
+              href="/answer-checker"
               className={`nav-underline font-medium transition-colors relative ${
-                isActive('/answer-checker') 
+                isActive('/answer-checker')
                   ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
               Answer Checker
             </Link>
-            <Link 
-              href="hall-of-fame" 
+            <Link
+              href="/hall-of-fame"
               className={`nav-underline font-medium transition-colors relative ${
-                isActive('/hall-of-fame') 
+                isActive('/hall-of-fame')
                   ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
               Hall of Fame
             </Link>
-            <Link 
-              href="hints" 
+            <Link
+              href="/hints"
               className={`nav-underline font-medium transition-colors relative ${
-                isActive('/hints') 
+                isActive('/hints')
                   ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
             >
               Hints
             </Link>
-            <Link 
-              href="info" 
+            <Link
+              href="/info"
               className={`nav-underline font-medium transition-colors relative ${
-                isActive('/info') 
+                isActive('/info')
                   ? 'text-gray-700'
                   : 'text-gray-600 hover:text-primary-600'
               }`}
